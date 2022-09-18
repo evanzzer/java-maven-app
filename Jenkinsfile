@@ -2,7 +2,7 @@
 pipeline {
     agent {
         docker {
-            image 'maven:3-alpine'
+            image 'maven:3.6.1-alpine'
             args '-p 3000:3000'
         }
     }
