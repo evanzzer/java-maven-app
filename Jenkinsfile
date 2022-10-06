@@ -25,6 +25,18 @@ pipeline {
                 }
             }
         }
+        stage('Manual Approval') {
+            steps {
+                input message: 'Lanjutkan ke tahap Deploy?'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                sleep 60
+                sh './jenkins/scripts/kill.sh'
+            }
+        }
     }
 }
 // Script //
