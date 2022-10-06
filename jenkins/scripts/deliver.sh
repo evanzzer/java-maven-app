@@ -22,5 +22,7 @@ set +x
 
 echo 'The following command runs and outputs the execution of your Java'
 echo 'application (which Jenkins built using Maven) to the Jenkins UI.'
-echo $(java -jar target/${NAME}-${VERSION}.jar) | tee /var/www/html/index.html
+set -x
+echo $(java -jar target/${NAME}-${VERSION}.jar) > index.html
+mv index.html /var/www/html/index.html
 echo $(cat /var/www/html/index.html)
